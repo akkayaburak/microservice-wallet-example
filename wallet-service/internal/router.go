@@ -1,7 +1,8 @@
 package router
 
 import (
-	"github.com/burak/microservice-example/wallet-service/internal/handler"
+	"wallet-service/internal/handler"
+
 	"github.com/gorilla/mux"
 )
 

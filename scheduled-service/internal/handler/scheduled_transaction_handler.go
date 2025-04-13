@@ -11,7 +11,7 @@ type ScheduledTransactionHandler struct {
 	service *service.ScheduledTransactionsService
 }
 
-func NewAssetHandler(service *service.ScheduledTransactionsService) *ScheduledTransactionHandler {
+func NewScheduledTransactionHandler(service *service.ScheduledTransactionsService) *ScheduledTransactionHandler {
 	return &ScheduledTransactionHandler{service: service}
 }
 

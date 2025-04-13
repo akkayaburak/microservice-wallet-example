@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/burak/microservice-example/wallet-service/internal/model"
-	"github.com/burak/microservice-example/wallet-service/internal/service"
+	"wallet-service/internal/model"
+	"wallet-service/internal/service"
+
 	"github.com/gorilla/mux"
 )
 

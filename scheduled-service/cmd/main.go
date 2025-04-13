@@ -20,8 +20,8 @@ func main() {
 
 	stRepo.InitializeDB()
 
-	stService := service.NewAssetService(stRepo)
-	stHandler := handler.NewAssetHandler(stService)
+	stService := service.NewScheduledTransactionService(stRepo)
+	stHandler := handler.NewScheduledTransactionHandler(stService)
 
 	go cron.RunScheduledTransactions(db)
 

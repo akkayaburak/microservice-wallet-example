@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/burak/microservice-example/wallet-service/internal/model"
+	"wallet-service/internal/model"
 )
 
 type WalletRepository struct {
@@ -22,7 +22,6 @@ func NewSQLiteDB(filePath string) (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	// Veritabanı bağlantısının açıldığını kontrol et
 	if err := db.Ping(); err != nil {
 		return nil, err
 	}
@@ -40,9 +39,9 @@ func (r *WalletRepository) InitializeDB() {
 	`
 	_, err := r.DB.Exec(query)
 	if err != nil {
-		log.Fatalf("Veritabanı tablosu oluşturulamadı: %v", err)
+		log.Fatalf("table could not be created: %v", err)
 	}
-	fmt.Println("wallets tablosu oluşturuldu veya zaten mevcut.")
+	fmt.Println("scheduled_transactions table is created or already exists")
 }
 
 func (r *WalletRepository) isWalletExists(address, network string) (bool, error) {
@@ -79,7 +78,7 @@ func (r *WalletRepository) GetWallet(address, network string) (*model.Wallet, er
 	var wallet model.Wallet
 	if err := row.Scan(&wallet.Address, &wallet.Network); err != nil {
 		if err == sql.ErrNoRows {
-			return nil, nil // Eğer wallet bulunamazsa, nil döner
+			return nil, nil
 		}
 		return nil, fmt.Errorf("could not get wallet: %w", err)
 	}

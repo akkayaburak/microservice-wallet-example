@@ -40,9 +40,9 @@ func (r *AssetRepository) InitializeDB() {
 	`
 	_, err := r.DB.Exec(query)
 	if err != nil {
-		log.Fatalf("Veritabanı tablosu oluşturulamadı: %v", err)
+		log.Fatalf("table could not be created: %v", err)
 	}
-	fmt.Println("assets tablosu oluşturuldu veya zaten mevcut.")
+	fmt.Println("assets table is created or already exists.")
 }
 
 func (r *AssetRepository) CreateAsset(asset model.Asset) error {
@@ -51,7 +51,7 @@ func (r *AssetRepository) CreateAsset(asset model.Asset) error {
 		VALUES (?, ?, ?, ?)
 	`, asset.WalletID, asset.Symbol, asset.Amount, asset.Network)
 	if err != nil {
-		return fmt.Errorf("asset eklenemedi: %v", err)
+		return fmt.Errorf("could not add the asset: %v", err)
 	}
 	return nil
 }
@@ -59,7 +59,7 @@ func (r *AssetRepository) CreateAsset(asset model.Asset) error {
 func (r *AssetRepository) GetAssets() ([]model.Asset, error) {
 	rows, err := r.DB.Query(`SELECT id, wallet_id, symbol, amount, network FROM assets`)
 	if err != nil {
-		return nil, fmt.Errorf("asset eklenemedi: %v", err)
+		return nil, fmt.Errorf("could not get assets: %v", err)
 	}
 	defer rows.Close()
 

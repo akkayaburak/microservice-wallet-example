@@ -9,7 +9,7 @@ type ScheduledTransactionsService struct {
 	repo *repository.ScheduledTransactionRepository
 }
 
-func NewAssetService(repo *repository.ScheduledTransactionRepository) *ScheduledTransactionsService {
+func NewScheduledTransactionService(repo *repository.ScheduledTransactionRepository) *ScheduledTransactionsService {
 	return &ScheduledTransactionsService{repo: repo}
 }
 

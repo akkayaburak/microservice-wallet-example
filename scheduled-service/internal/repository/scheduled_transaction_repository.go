@@ -24,8 +24,6 @@ func NewSQLiteDB(filePath string) (*sql.DB, error) {
 		return nil, err
 	}
 
-	db.SetMaxOpenConns(2)
-	db.SetMaxIdleConns(2)
 	return db, nil
 }
 
@@ -45,9 +43,9 @@ func (r *ScheduledTransactionRepository) InitializeDB() {
 	`
 	_, err := r.DB.Exec(query)
 	if err != nil {
-		log.Fatalf("Veritabanı tablosu oluşturulamadı: %v", err)
+		log.Fatalf("table could not be created: %v", err)
 	}
-	fmt.Println("scheduled_transactions tablosu oluşturuldu veya zaten mevcut.")
+	fmt.Println("scheduled_transactions table is created or already exists")
 }
 
 func (r *ScheduledTransactionRepository) CreateScheduledTransaction(st model.ScheduledTransaction) error {
