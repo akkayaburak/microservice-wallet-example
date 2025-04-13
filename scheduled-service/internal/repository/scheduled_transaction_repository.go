@@ -11,7 +11,7 @@ type ScheduledTransactionRepository struct {
 	DB *sql.DB
 }
 
-func NewAssetRepository(db *sql.DB) *ScheduledTransactionRepository {
+func NewScheduledTransactionRepository(db *sql.DB) *ScheduledTransactionRepository {
 	return &ScheduledTransactionRepository{DB: db}
 }
 

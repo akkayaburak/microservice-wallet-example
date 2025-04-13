@@ -16,7 +16,7 @@ func main() {
 		log.Fatal("Failed to connect to the database:", err)
 	}
 
-	stRepo := repository.NewAssetRepository(db)
+	stRepo := repository.NewScheduledTransactionRepository(db)
 
 	stRepo.InitializeDB()
 
